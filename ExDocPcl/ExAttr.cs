@@ -21,6 +21,24 @@ namespace Moonmile.ExDoc
         {
             return attr.Value;
         }
+        /// <summary>
+        /// 数字にキャスト
+        /// </summary>
+        /// <param name="els"></param>
+        /// <returns></returns>
+        public static implicit operator int(ExAttr attr)
+        {
+            return int.Parse(attr.Value);
+        }
+        /// <summary>
+        /// 数字にキャスト
+        /// </summary>
+        /// <param name="els"></param>
+        /// <returns></returns>
+        public static implicit operator double(ExAttr attr)
+        {
+            return double.Parse(attr.Value);
+        }
     }
     public class ExAttrs : List<ExAttr>
     {
@@ -92,6 +110,15 @@ namespace Moonmile.ExDoc
         {
             return lst.SelectAttrsByValue(value, true);
         }
+        public static ExAttrs operator ==(ExAttrs lst, int value)
+        {
+            return lst.SelectAttrsByValue(value.ToString());
+        }
+        public static ExAttrs operator !=(ExAttrs lst, int value)
+        {
+            return lst.SelectAttrsByValue(value.ToString(), true);
+        }
+
         public override bool Equals(object obj)
         {
             return base.Equals(obj);

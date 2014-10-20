@@ -174,6 +174,33 @@ namespace Moonmile.ExDoc
                 return attr;
             }
         }
+        /// <summary>
+        /// 文字列にキャスト
+        /// </summary>
+        /// <param name="els"></param>
+        /// <returns></returns>
+        public static implicit operator string(ExElement el)
+        {
+            return el.Value;
+        }
+        /// <summary>
+        /// 数字にキャスト
+        /// </summary>
+        /// <param name="els"></param>
+        /// <returns></returns>
+        public static implicit operator int(ExElement el)
+        {
+            return int.Parse(el.Value);
+        }
+        /// <summary>
+        /// 数字にキャスト
+        /// </summary>
+        /// <param name="els"></param>
+        /// <returns></returns>
+        public static implicit operator double(ExElement el)
+        {
+            return double.Parse(el.Value);
+        }
     }
 
     public class ExElements : List<ExElement>
