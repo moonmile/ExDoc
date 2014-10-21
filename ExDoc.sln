@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{720163D9-B07
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExDocFSharp.Test", "ExDocFSharp.Test\ExDocFSharp.Test.fsproj", "{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{70FAF7E4-78FE-4C73-B914-312C3C6D05C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70FAF7E4-78FE-4C73-B914-312C3C6D05C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70FAF7E4-78FE-4C73-B914-312C3C6D05C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

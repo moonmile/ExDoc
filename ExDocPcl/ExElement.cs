@@ -443,6 +443,6 @@ namespace Moonmile.ExDoc
                 DateTime.TryParse(els[0].Value, out ret);
             }
             return ret;
-        }   
+        }
     }
 }
