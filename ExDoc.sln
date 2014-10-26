@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{720163D9-B07
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExDocFSharp.Test", "ExDocFSharp.Test\ExDocFSharp.Test.fsproj", "{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExYamlPcl", "ExYamlPcl\ExYamlPcl.csproj", "{C4F5B1DF-93B9-45E2-BA3C-7BF5FCB958D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExYaml.Test", "ExYaml.Test\ExYaml.Test.csproj", "{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F5B1DF-93B9-45E2-BA3C-7BF5FCB958D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F5B1DF-93B9-45E2-BA3C-7BF5FCB958D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F5B1DF-93B9-45E2-BA3C-7BF5FCB958D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F5B1DF-93B9-45E2-BA3C-7BF5FCB958D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

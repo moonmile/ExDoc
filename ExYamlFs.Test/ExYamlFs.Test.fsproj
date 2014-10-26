@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="$(MSBuildProjectDirectory)\..\packages\MSBuild.Extension.Pack.1.3.0\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.FileSystem.File" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>50bd80a7-560c-468a-ac90-758983bc5f94</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RootNamespace>ExYamlFs.Test</RootNamespace>
+    <AssemblyName>ExYamlFs.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Name>FSharpTest</Name>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup>
+        <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Debug\FSharpTest.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Release\FSharpTest.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FsUnit.NUnit">
+      <HintPath>..\packages\FsUnit.1.2.1.0\Lib\Net40\FsUnit.NUnit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="YamlDotNet">
+      <HintPath>..\packages\YamlDotNet.3.3.0\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlDotNet.Converters">
+      <HintPath>..\packages\YamlDotNet.Converters.2.2.0\lib\net35\YamlDotNet.Converters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlDotNet.Core">
+      <HintPath>..\packages\YamlDotNet.Core.2.2.0\lib\net35\YamlDotNet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlDotNet.RepresentationModel">
+      <HintPath>..\packages\YamlDotNet.RepresentationModel.2.2.0\lib\net35\YamlDotNet.RepresentationModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExYamlFs.Test.fs" />
+    <None Include="Script.fsx" />
+    <None Include="packages.config" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  -->
+  <Target Name="AfterBuild">
+    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace" RegexPattern="&lt;dependentAssembly&gt;([\s]+.)&lt;assemblyIdentity name=&quot;FSharp\.Core&quot; publicKeyToken=&quot;b03f5f7f11d50a3a&quot; culture=&quot;neutral&quot; \/&gt;([\s\S]+?)&lt;\/dependentAssembly&gt;" RegexOptionList="IgnoreCase|Singleline" Replacement="&lt;dependentAssembly&gt;&#xD;&#xA;        &lt;assemblyIdentity name=&quot;FSharp.Core&quot; publicKeyToken=&quot;b03f5f7f11d50a3a&quot; culture=&quot;neutral&quot; /&gt;&#xD;&#xA;        &lt;bindingRedirect oldVersion=&quot;0.0.0.0-$(TargetFSharpCoreVersion)&quot; newVersion=&quot;$(TargetFSharpCoreVersion)&quot;/&gt;&#xD;&#xA;      &lt;/dependentAssembly&gt;" Files="$(TargetPath).config" />
+  </Target>
+</Project>
