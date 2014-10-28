@@ -6,11 +6,9 @@ using SharpYaml;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
-
 using SharpYaml.Serialization;
 
-
-namespace Moonmile.ExYaml
+namespace Moonmile.ExDoc.Yaml
 {
     public static class YamlDocumentExtensions
     {

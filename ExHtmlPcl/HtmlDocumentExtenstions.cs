@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Moonmile.ExHtml
+namespace Moonmile.ExDoc.Html
 {
     public static class HtmlDocumentExtenstions
     {

@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpYaml.Serialization;
 
 using Moonmile.ExDoc;
-using Moonmile.ExYaml;
+using Moonmile.ExDoc.Yaml;
 using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;

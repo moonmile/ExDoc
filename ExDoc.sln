@@ -27,6 +27,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExYamlPcl", "ExYamlPcl\ExYa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExYaml.Test", "ExYaml.Test\ExYaml.Test.csproj", "{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{51E31C7B-A896-40F5-A04E-0F93625E1C69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExJsonPcl", "ExJsonPcl\ExJsonPcl.csproj", "{CABF902D-413D-473E-8300-0392B94C0D14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExJson.Test", "ExJson.Test\ExJson.Test.csproj", "{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pack", "pack", "{8CEF4FD9-3582-4CF2-99D9-FA4AB704E645}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\ExDoc.nuspec = nuget\ExDoc.nuspec
+		nuget\ExHtml.nuspec = nuget\ExHtml.nuspec
+		nuget\ExJson.nuspec = nuget\ExJson.nuspec
+		nuget\ExYaml.nuspec = nuget\ExYaml.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,8 +71,22 @@ Global
 		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABF902D-413D-473E-8300-0392B94C0D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABF902D-413D-473E-8300-0392B94C0D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABF902D-413D-473E-8300-0392B94C0D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABF902D-413D-473E-8300-0392B94C0D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9AE770B2-C786-43C7-ABB5-45A56ABB28B6} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
+		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
+		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
+		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
 	EndGlobalSection
 EndGlobal
