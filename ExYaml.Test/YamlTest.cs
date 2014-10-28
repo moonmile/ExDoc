@@ -406,6 +406,27 @@ items:
             Assert.AreEqual(xml, xml1);
         }
 
+        [TestMethod]
+        public void demo1()
+        {
+            var yaml = @"
+app:
+ - user: masuda
+ - apikey:  key-xxxx
+ - apipass: password
+";
+
+            var ys = new YamlStream();
+            ys.Load(new StringReader(yaml));
+            var xdoc = ys.Documents[0].ToXDocument();
+            var doc = ExDocument.Load(xdoc);
+
+            string apikey = doc * "apikey";
+            string apipass = doc * "apipass";
+
+            Debug.WriteLine("key:{0} pass:{1}",
+                apikey, apipass);
+        }
     }
 
 }

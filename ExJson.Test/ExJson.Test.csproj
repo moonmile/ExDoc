@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExDocPcl\ExDocPcl.csproj">
+      <Project>{f76c1c23-628f-40a8-8e10-616ff0012806}</Project>
+      <Name>ExDocPcl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExJsonPcl\ExJsonPcl.csproj">
       <Project>{cabf902d-413d-473e-8300-0392b94c0d14}</Project>
       <Name>ExJsonPcl</Name>
