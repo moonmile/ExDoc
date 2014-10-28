@@ -7,10 +7,11 @@ using System.Xml.Linq;
 
 namespace Moonmile.ExDoc
 {
-    public class ExElement
+    public class ExElement 
     {
         public ExElements Nodes { get; internal set; }
         internal XElement _el = null;
+        bool _deep = false;
 
         public XElement XElement { get { return _el; } }
         /// <summary>
@@ -29,7 +30,6 @@ namespace Moonmile.ExDoc
         /// </summary>
         public string Value
         {
-
             get
             {
                 if (_el == null)
@@ -37,6 +37,13 @@ namespace Moonmile.ExDoc
                 if (_el.FirstNode is XText)
                     return ((XText)_el.FirstNode).Value;
                 return "";
+            }
+            set
+            {
+                if (_el != null)
+                {
+                    _el.Value = value;
+                }
             }
         }
 
@@ -76,6 +83,53 @@ namespace Moonmile.ExDoc
         {
             return el.SelectNodes(tagName, true);
         }
+        public ExElements this[string tagName]
+        {
+            get {
+                var res = this.SelectNodes(tagName, _deep);
+                _deep = false;
+                return res;
+            }
+            set
+            {
+                var res = this.SelectNodes(tagName, _deep);
+                _deep = false;
+                foreach (var it in res)
+                {
+                    it._el.Value = value;
+                }
+            }
+        }
+
+        public ExElements this[string name, string v]
+        {
+            get
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where(x => x.Value == v)
+                    .ToList<ExElement>();
+                _deep = false;
+                var lst = new ExElements();
+                lst.AddRange(res);
+                return lst;
+            }
+            set
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where(x => x.Value == v)
+                    .ToList<ExElement>();
+                _deep = false;
+                foreach (var it in res)
+                {
+                    it._el.Value = value;
+                }
+            }
+        }
+
+        public ExElement _
+        {
+            get { _deep = true;  return this; }
+        }
 
         /// <summary>
         /// 値でマッチする子ノードを取得する
@@ -101,7 +155,6 @@ namespace Moonmile.ExDoc
             }
             return this.Nodes.SelectNodesByValue(value, deep, reverse);
         }
-
         /// <summary>
         /// 単一の要素にキャストする
         /// </summary>
@@ -193,7 +246,7 @@ namespace Moonmile.ExDoc
             return int.Parse(el.Value);
         }
         /// <summary>
-        /// 数字にキャスト
+        /// 実数にキャスト
         /// </summary>
         /// <param name="els"></param>
         /// <returns></returns>
@@ -201,10 +254,23 @@ namespace Moonmile.ExDoc
         {
             return double.Parse(el.Value);
         }
+
+        #region 更新のためのキャスト
+
+        public ExElement(string v) { _el = new XElement("x", v); }
+        public static implicit operator ExElement(string v)
+        {
+            return new ExElement(v);
+        }
+
+        #endregion
+
     }
 
     public class ExElements : List<ExElement>
     {
+        bool _deep = false;
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -287,6 +353,46 @@ namespace Moonmile.ExDoc
         {
             return els.SelectNodes(tagName, true);
         }
+
+        public ExElements this[string tagName]
+        {
+            get
+            {
+                var res = this.SelectNodes(tagName, _deep);
+                _deep = false;
+                return res;
+            }
+        }
+        public ExElement _
+        {
+            get { _deep = true; return this; }
+        }
+
+        public ExElements this[string name, string v]
+        {
+            get
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where(x => x.Value == v)
+                    .ToList<ExElement>();
+                _deep = false;
+                var lst = new ExElements();
+                lst.AddRange(res);
+                return  lst;
+            }
+            set
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where( x => x.Value == v) 
+                    .ToList<ExElement>();
+                _deep = false;
+                foreach (var it in res)
+                {
+                    it._el.Value = value;
+                }
+            }
+        }
+
 
         /// <summary>
         /// 単一要素のキャスト（最初の要素を取得）
@@ -444,5 +550,53 @@ namespace Moonmile.ExDoc
             }
             return ret;
         }
+
+        public string Value
+        {
+            get
+            {
+                return (string)this;
+            }
+            set
+            {
+                foreach (var it in this)
+                {
+                    it.Value = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 値のマッチング
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public ExElements Is(string value)
+        {
+            var lst = this.Where(x => x.Value == value).ToList<ExElement>();
+            var res = new ExElements();
+            res.AddRange(lst);
+            return res;
+        }
+        /// <summary>
+        /// 親ノードから削除
+        /// </summary>
+        public void Remove()
+        {
+            foreach (var it in this)
+            {
+                it.XElement.Remove();
+            }
+        }
+
+        #region 更新のためのキャスト
+
+        public ExElements(string v) { this.Add(new ExElement("x") { Value = v }); }
+        public static implicit operator ExElements(string v)
+        {
+            return new ExElements(v);
+        }
+
+        #endregion
     }
 }

@@ -12,6 +12,7 @@ namespace Moonmile.ExDoc
     {
         public XDocument _doc;
         public ExElement Root { get; internal set; }
+        bool _deep = false;
 
 
         /// <summary>
@@ -33,10 +34,10 @@ namespace Moonmile.ExDoc
         /// </summary>
         /// <param name="xml"></param>
         /// <returns></returns>
-        public static ExDocument LoadXml( string xml )
+        public static ExDocument LoadXml(string xml)
         {
-            var sr = new StringReader( xml );
-            var doc = XDocument.Load( sr );
+            var sr = new StringReader(xml);
+            var doc = XDocument.Load(sr);
             var edoc = new ExDocument();
             edoc._doc = doc;
             edoc.Root = new ExElement();
@@ -76,16 +77,85 @@ namespace Moonmile.ExDoc
         /// <returns></returns>
         public ExElements SelectNodes(string tagName, bool deep = false)
         {
-            return this.Root.SelectNodes( tagName, deep );
+            // 初期化
+            this.Root.Nodes = null; 
+            return this.Root.SelectNodes(tagName, deep);
         }
 
         public static ExElements operator /(ExDocument doc, string tagName)
         {
-            return doc.Root.SelectNodes(tagName, false);
+            return doc.SelectNodes(tagName, false);
         }
         public static ExElements operator *(ExDocument doc, string tagName)
         {
-            return doc.Root.SelectNodes(tagName, true);
+            return doc.SelectNodes(tagName, true);
+        }
+        public ExElements this[string tagName]
+        {
+            get
+            {
+                if (_deep == false)
+                {
+                    if (this.Root.Name == tagName)
+                    {
+                        // 一度検索してリストを返す
+                        this.Root.SelectNodes("x");
+                        return this.Root.Nodes;
+                    }
+                    else
+                    {
+                        return new ExElements();
+                    }
+                }
+                else
+                {
+                    var res = this.SelectNodes(tagName, true);
+                    _deep = false;
+                    return res;
+                }
+            }
+            set
+            {
+                var res = this.SelectNodes(tagName, _deep);
+                _deep = false;
+                foreach (var it in res)
+                {
+                    it._el.Value = value;
+                }
+            }
+
+        }
+        public ExElements this[string name, string v]
+        {
+            get
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where(x => x.Value == v)
+                    .ToList<ExElement>();
+                _deep = false;
+                var lst = new ExElements();
+                lst.AddRange(res);
+                return lst;
+            }
+            set
+            {
+                var res = this.SelectNodes(name, _deep)
+                    .Where(x => x.Value == v)
+                    .ToList<ExElement>();
+                _deep = false;
+                foreach (var it in res)
+                {
+                    it._el.Value = value;
+                }
+            }
+        }
+        public ExDocument _
+        {
+            get
+            {
+                _deep = true;
+                return this;
+            }
         }
     }
 }

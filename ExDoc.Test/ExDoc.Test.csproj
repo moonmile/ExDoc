@@ -56,7 +56,7 @@
     <Compile Include="Demo2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExElement.cs" />
-    <Compile Include="TestExElementBrace.cs" />
+    <Compile Include="TestBracket.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExDocPcl\ExDocPcl.csproj">
