@@ -41,6 +41,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pack", "pack", "{8CEF4FD9-3
 		nuget\ExYaml.nuspec = nuget\ExYaml.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExXamlPcl", "ExXamlPcl\ExXamlPcl.csproj", "{335A54B4-C0AE-4CE8-BBF4-FFD9F5979A6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExXaml.Test", "ExXaml.Test\ExXaml.Test.csproj", "{FE4883B8-D572-46EB-9473-16501E6EA71D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,14 @@ Global
 		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335A54B4-C0AE-4CE8-BBF4-FFD9F5979A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335A54B4-C0AE-4CE8-BBF4-FFD9F5979A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335A54B4-C0AE-4CE8-BBF4-FFD9F5979A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335A54B4-C0AE-4CE8-BBF4-FFD9F5979A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE4883B8-D572-46EB-9473-16501E6EA71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE4883B8-D572-46EB-9473-16501E6EA71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE4883B8-D572-46EB-9473-16501E6EA71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE4883B8-D572-46EB-9473-16501E6EA71D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,5 +100,6 @@ Global
 		{F308579B-1C71-4A9D-A371-26C6D0FCEAEE} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
 		{ED709F01-E91A-4EB5-9C5F-B599CA31DCC2} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
 		{ECF9D461-A2F4-4CB2-A07B-D27D8B0897E8} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
+		{FE4883B8-D572-46EB-9473-16501E6EA71D} = {51E31C7B-A896-40F5-A04E-0F93625E1C69}
 	EndGlobalSection
 EndGlobal

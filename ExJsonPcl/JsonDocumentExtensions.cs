@@ -13,7 +13,7 @@ namespace Moonmile.ExDoc.Json
         Attribute,
         Element
     }
-    public static class YamlDocumentExtensions
+    public static class JsonDocumentExtensions
     {
         public static XDocument ToXDocument(this JToken jdoc, XmlPriority pri = XmlPriority.Attribute)
         {
@@ -65,15 +65,13 @@ namespace Moonmile.ExDoc.Json
             }
             else
             {
-                bool d = false;
                 // 親要素に追加する
                 foreach (var it in token.Children())
                 {
                     if (it is JValue)
                     {
-                        var el = new XElement(pa.Name);
-                        d = true;
-                        pa.Parent.Add(el);
+                        var el = new XElement("item");
+                        pa.Add(el);
                         el.Value = (it as JValue).Value.ToString();
                     }
                     else
@@ -84,17 +82,11 @@ namespace Moonmile.ExDoc.Json
                         }
                         else
                         {
-                            var el = new XElement(pa.Name);
-                            d = true;
-                            pa.Parent.Add(el);
+                            var el = new XElement("item");
+                            pa.Add(el);
                             el.AddJsonNode(it, pri);
                         }
                     }
-                }
-                if (d == true)
-                {
-                    // 重複を消す
-                    pa.Remove();
                 }
             }
             return pa;
